@@ -39,13 +39,14 @@ int queue::isFull() {
 
 void queue::enqueue(int item) {
     if (isFull()) {
-        cout << "Queue is already full." << endl;
+        cout << "More elements cannot be added as queue is full." << endl;
     } else {
         if (isEmpty()) {
             front = 0;
         }
         rear++;
         arr[rear] = item;
+        printf("Added %d to queue.\n", arr[rear]);
     }
 }
 
@@ -53,6 +54,7 @@ void queue::dequeue() {
     if (isEmpty()) {
         cout << "Queue is already empty." << endl;
     } else {
+        printf("Removed %d from queue.\n", arr[front]);
         if (front >= rear) {
             front = -1;
             rear = -1;
@@ -63,6 +65,11 @@ void queue::dequeue() {
 }
 
 int main() {
+
+    queue q1;
+    q1.dequeue();
+    q1.enqueue(1);
+    q1.dequeue();
 
     return 0;
 }
